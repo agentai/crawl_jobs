@@ -55,10 +55,18 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 RANDOM_UA_TYPE = 'random' ##random    chrome
+
+PROXY_URL = 'http://127.0.0.1:5010/get'
+
+HTTPPROXY_ENABLED = True
+
 DOWNLOADER_MIDDLEWARES = {
     # 'anjuke.middlewares.UserAgentDownloaderMiddleware': 543,
     'anjuke.middlewares.RandomUserAgentMiddlware': 543,
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    'anjuke.middlewares.ProxyMiddleware': 544,
+    # 'anjuke.middlewares.RandomProxyMiddleware': 749,  # 修改下载优先级数字
+    'scrapy.downloadermiddleware.httpproxy.HttpProxyMiddleware': None
 }
 
 # Enable or disable extensions
